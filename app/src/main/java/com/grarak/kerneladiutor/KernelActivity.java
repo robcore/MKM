@@ -24,7 +24,6 @@ import android.text.Html;
 import android.view.View;
 import android.widget.ImageView;
 
-import com.grarak.kerneladiutor.fragments.tools.download.ParentFragment;
 import com.grarak.kerneladiutor.utils.json.Downloads;
 import com.grarak.kerneladiutor.utils.Utils;
 import com.nineoldandroids.view.ViewHelper;
@@ -55,9 +54,6 @@ public class KernelActivity extends BaseActivity {
         ImageView logoView = (ImageView) findViewById(R.id.logo);
         ViewCompat.setTransitionName(logoView, LOGO_ARG);
         Utils.loadImagefromUrl(kernelContent.getLogo(), logoView);
-
-        getSupportFragmentManager().beginTransaction().replace(R.id.content_frame,
-                ParentFragment.newInstance(kernelContent)).commitAllowingStateLoss();
     }
 
     @Override
