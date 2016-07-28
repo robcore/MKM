@@ -484,19 +484,19 @@
     <string name="internal_storage">Internal Storage</string>
     <string name="external_storage">External Storage</string>
     <string name="scheduler">I/O Scheduler</string>
-    <string name="scheduler_summary">Set which I/O scheduler will be used. They operate with disk drivers, in case of phone with flash memory in it. Battery life and performance can vary depending on which I/O scheduler you chose.</string>
-    <string name="scheduler_tunable">Scheduler Tunable</string>
-    <string name="scheduler_tunable_summary">The various configuration items which are Scheduler-dependent.</string>
-    <string name="read_ahead">Read-ahead</string>
-    <string name="read_ahead_summary">The Read-ahead value on the phone memory.</string>
+    <string name="scheduler_summary">Set which I/O scheduler will be used. They operate with disk drives, in case of phone with flash memory in it. Battery life and performance can vary depending on which I/O scheduler you chose.</string>
+    <string name="scheduler_tunable">Scheduler Tunables</string>
+    <string name="scheduler_tunable_summary">Almost every I/O scheduler provides some configuration options. If you want to tune them, you can do that by clicking here.</string>
+    <string name="read_ahead">Readahead</string>
+    <string name="read_ahead_summary">This is a cache for files that have been opened recently, so they can be quickly accessed again if needed. By default, this value has been set to 128kB. Usually having more cache means that more files can be cached, this can mean higher read and write speeds, but this can also result in more I/O latency.</string>
     <string name="rotational">Rotational Storage</string>
-    <string name="rotational_summary">Treat device as rotational storage.</string>
+    <string name="rotational_summary">Treat device as rotational storage, such are, for example, hard disk drives. This is not recommended on mobile devices, since we have flash storage instead of rotational.</string>
     <string name="iostats">I/O Stats</string>
-    <string name="iostats_summary">Maintain I/O statistics for this storage device. Disabling will break I/O monitoring apps.</string>
+    <string name="iostats_summary">Provide I/O statistics for this storage device. Having statistics running in background could slow phone down a bit. Disabling this will break I/O monitoring apps.</string>
     <string name="iorandom">Add Random</string>
-    <string name="iorandom_summary">Draw entropy from spinning (rotational) storage.</string>
+    <string name="iorandom_summary">Draw entropy from spinning (rotational) storage. Perhaps this doesn\'t work if you disabled rotational storage. You should have this turned off, because mobile devices don\'t use spinning storage.</string>
     <string name="ioaffitiny">RQ Affinity</string>
-    <string name="ioraffinity_summary">Try to have scheduler requests complete on the CPU core they were made from. Higher values are more aggressive.</string>
+    <string name="ioraffinity_summary">Try to have scheduler requests complete on the CPU core they were made from. Higher values are more aggressive. This can sometimes save some battery life.</string>
 
     <!-- Kernel Samepage Merging -->
     <string name="ksm_full_scans">Full scans</string>
