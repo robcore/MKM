@@ -400,6 +400,7 @@ public interface Constants {
     String SCREEN_KCAL_CTRL = SCREEN_KCAL + "/kcal";
     String SCREEN_KCAL_CTRL_CTRL = SCREEN_KCAL + "/kcal_ctrl";
     String SCREEN_KCAL_CTRL_ENABLE = SCREEN_KCAL + "/kcal_enable";
+    String SCREEN_KCAL_FIX_YELLOW = SCREEN_KCAL + "/kcal_fix_yellow";
     String SCREEN_KCAL_CTRL_MIN = SCREEN_KCAL + "/kcal_min";
     String SCREEN_KCAL_CTRL_INVERT = SCREEN_KCAL + "/kcal_invert";
     String SCREEN_KCAL_CTRL_SAT = SCREEN_KCAL + "/kcal_sat";

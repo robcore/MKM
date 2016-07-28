@@ -57,6 +57,7 @@ public class ScreenFragment extends RecyclerViewFragment implements SeekBarCardV
     private SeekBarCardView.DSeekBarCard[] mColorCalibrationCard;
     private SeekBarCardView.DSeekBarCard mColorCalibrationMinCard;
     private SwitchCardView.DSwitchCard mInvertScreenCard;
+    private SwitchCardView.DSwitchCard mFixYellowCard;
     private SeekBarCardView.DSeekBarCard mSaturationIntensityCard;
     private SwitchCardView.DSwitchCard mGrayscaleModeCard;
     private SeekBarCardView.DSeekBarCard mScreenHueCard;
@@ -175,6 +176,16 @@ public class ScreenFragment extends RecyclerViewFragment implements SeekBarCardV
             mInvertScreenCard.setOnDSwitchCardListener(this);
 
             addView(mInvertScreenCard);
+        }
+
+        if (Screen.hasFixYellow()) {
+            mFixYellowCard = new SwitchCardView.DSwitchCard();
+            mFixYellowCard.setTitle(getString(R.string.fix_yellow));
+            mFixYellowCard.setDescription(getString(R.string.fix_yellow_summary));
+            mFixYellowCard.setChecked(Screen.isFixYellow());
+            mFixYellowCard.setOnDSwitchCardListener(this);
+
+            addView(mFixYellowCard);
         }
 
         if (Screen.hasSaturationIntensity()) {
@@ -795,6 +806,8 @@ public class ScreenFragment extends RecyclerViewFragment implements SeekBarCardV
             Screen.activateMasterSequence(checked, getActivity());
         else if (dSwitchCard == mGloveModeCard)
             Screen.activateGloveMode(checked, getActivity());
+        else if (dSwitchCard == mFixYellowCard)
+            Screen.activateFixYellow(checked, getActivity());
     }
 
     @Override

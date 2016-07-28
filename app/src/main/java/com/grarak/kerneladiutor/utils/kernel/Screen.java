@@ -535,6 +535,18 @@ public class Screen implements Constants {
         return Utils.existFile(SCREEN_KCAL_CTRL_SAT);
     }
 
+    public static void activateFixYellow(boolean active, Context context) {
+        Control.runCommand(active ? "1" : "0", SCREEN_KCAL_FIX_YELLOW, Control.CommandType.GENERIC, context);
+    }
+
+    public static boolean isFixYellow() {
+        return Utils.readFile(SCREEN_KCAL_FIX_YELLOW).equals("1");
+    }
+
+    public static boolean hasFixYellow() {
+        return Utils.existFile(SCREEN_KCAL_FIX_YELLOW);
+    }
+
     public static void activateInvertScreen(boolean active, Context context) {
         Control.runCommand(active ? "1" : "0", SCREEN_KCAL_CTRL_INVERT, Control.CommandType.GENERIC, context);
     }

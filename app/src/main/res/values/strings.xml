@@ -352,6 +352,8 @@
     <string name="blue">Blue</string>
     <string name="min_rgb">Minimum RGB Value</string>
     <string name="invert_screen">Invert Screen</string>
+    <string name="fix_yellow">Fix Yellowish Screen Color</string>
+    <string name="fix_yellow_summary">This cleans out screen colors to get rid of yellowish tone on them. It makes screen use more blueish preset.</string>
     <string name="saturation_intensity">Saturation Intensity</string>
     <string name="grayscale_mode">Grayscale Mode</string>
     <string name="screen_hue">Screen Hue</string>
@@ -481,8 +483,8 @@
     <!-- I/O Scheduler -->
     <string name="internal_storage">Internal Storage</string>
     <string name="external_storage">External Storage</string>
-    <string name="scheduler">Scheduler</string>
-    <string name="scheduler_summary">Set the active I/O elevator algorithm. The Scheduler decides how to handle I/O requests.</string>
+    <string name="scheduler">I/O Scheduler</string>
+    <string name="scheduler_summary">Set which I/O scheduler will be used. They operate with disk drivers, in case of phone with flash memory in it. Battery life and performance can vary depending on which I/O scheduler you chose.</string>
     <string name="scheduler_tunable">Scheduler Tunable</string>
     <string name="scheduler_tunable_summary">The various configuration items which are Scheduler-dependent.</string>
     <string name="read_ahead">Read-ahead</string>
