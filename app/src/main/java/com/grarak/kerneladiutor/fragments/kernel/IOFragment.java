@@ -23,6 +23,7 @@ import com.grarak.kerneladiutor.R;
 import com.grarak.kerneladiutor.elements.cards.CardViewItem;
 import com.grarak.kerneladiutor.elements.DDivider;
 import com.grarak.kerneladiutor.elements.cards.PopupCardView;
+import com.grarak.kerneladiutor.elements.cards.SwitchCardView;
 import com.grarak.kerneladiutor.fragments.PathReaderFragment;
 import com.grarak.kerneladiutor.fragments.RecyclerViewFragment;
 import com.grarak.kerneladiutor.fragments.ViewPagerFragment;
@@ -32,6 +33,7 @@ import com.grarak.kerneladiutor.utils.kernel.IO;
 
 import java.util.ArrayList;
 import java.util.List;
+
 
 /**
  * Created by willi on 11.04.15.
@@ -75,15 +77,19 @@ public class IOFragment extends ViewPagerFragment implements Constants {
     }
 
     public static class IOPart extends RecyclerViewFragment implements PopupCardView.DPopupCard.OnDPopupCardListener,
-            CardViewItem.DCardView.OnDCardListener {
+            CardViewItem.DCardView.OnDCardListener, SwitchCardView.DSwitchCard.OnDSwitchCardListener {
 
         private final List<String> readheads = new ArrayList<>();
+
+        private final List<String> list = new ArrayList<>();
 
         private PopupCardView.DPopupCard mInternalSchedulerCard, mExternalSchedulerCard;
 
         private CardViewItem.DCardView mInternalTunableCard, mExternalTunableCard;
 
-        private PopupCardView.DPopupCard mInternalReadAheadCard, mExternalReadAheadCard;
+        private PopupCardView.DPopupCard mInternalReadAheadCard, mExternalReadAheadCard, mIOAffinityCard;
+
+        private SwitchCardView.DSwitchCard mRotationalCard, mIOStatsCard, mIORandomCard;
 
         @Override
         public String getClassName() {
@@ -95,9 +101,14 @@ public class IOFragment extends ViewPagerFragment implements Constants {
             super.init(savedInstanceState);
 
             readheads.clear();
+
             internalStorageInit();
             if (IO.hasExternalStorage())
                 externalStorageInit();
+            if (IO.hasRotational()) RotationalInit();
+            if (IO.hasIORandom()) IORandomInit();
+            if (IO.hasIOStats()) IOStatsInit();
+            if (IO.hasIOAffinity()) IOAffintyInit();
         }
 
         private void internalStorageInit() {
@@ -174,15 +185,71 @@ public class IOFragment extends ViewPagerFragment implements Constants {
             else if (dPopupCard == mExternalReadAheadCard)
                 IO.setReadahead(IO.StorageType.EXTERNAL, Utils.stringToInt(readheads.get(position)
                         .replace(getString(R.string.kb), "")), getActivity());
+            else if (dPopupCard == mIOAffinityCard)
+                IO.setIOAffinity(position, getActivity());
         }
 
-        @Override
-        public void onClick(CardViewItem.DCardView dCardView) {
+        private void RotationalInit() {
+                mRotationalCard = new SwitchCardView.DSwitchCard();
+                mRotationalCard.setTitle(getString(R.string.rotational));
+                mRotationalCard.setDescription(getString(R.string.rotational_summary));
+                mRotationalCard.setChecked(IO.isRotationalActive());
+                mRotationalCard.setOnDSwitchCardListener(this);
+
+                addView(mRotationalCard);
+        }
+
+        private void IORandomInit() {
+            mIORandomCard = new SwitchCardView.DSwitchCard();
+            mIORandomCard.setTitle(getString(R.string.iorandom));
+            mIORandomCard.setDescription(getString(R.string.iorandom_summary));
+            mIORandomCard.setChecked(IO.isIORandomActive());
+            mIORandomCard.setOnDSwitchCardListener(this);
+
+            addView(mIORandomCard);
+        }
+
+        private void IOStatsInit() {
+            mIOStatsCard = new SwitchCardView.DSwitchCard();
+            mIOStatsCard.setTitle(getString(R.string.iostats));
+            mIOStatsCard.setDescription(getString(R.string.iostats_summary));
+            mIOStatsCard.setChecked(IO.isIOStatsActive());
+            mIOStatsCard.setOnDSwitchCardListener(this);
+
+            addView(mIOStatsCard);
+        }
+
+        private void IOAffintyInit() {
+                List<String> list = new ArrayList<>();
+                for (int i = 0; i < 3; i++) list.add(String.valueOf(i));
+
+
+                mIOAffinityCard = new PopupCardView.DPopupCard(list);
+                mIOAffinityCard.setTitle(getString(R.string.ioaffitiny));
+                mIOAffinityCard.setDescription(getString(R.string.ioraffinity_summary));
+                mIOAffinityCard.setItem(IO.getIOAffinity());
+                mIOAffinityCard.setOnDPopupCardListener(this);
+
+                addView(mIOAffinityCard);
+        }
+
+
+    @Override
+    public void onClick(CardViewItem.DCardView dCardView) {
             ioFragment.storageType = dCardView == mInternalTunableCard ? IO.StorageType.INTERNAL : IO.StorageType.EXTERNAL;
             ioFragment.schedulerPart.reload();
             ioFragment.setCurrentItem(1);
         }
 
+        @Override
+        public void onChecked(SwitchCardView.DSwitchCard dSwitchCard, boolean checked) {
+            if (dSwitchCard == mRotationalCard)
+                IO.activaterotational(checked, getActivity());
+            else if (dSwitchCard == mIORandomCard)
+                IO.activateIORandom(checked, getActivity());
+            else if (dSwitchCard == mIOStatsCard)
+                IO.activateIOstats(checked, getActivity());
+        }
     }
 
     public static class SchedulerPart extends PathReaderFragment {
