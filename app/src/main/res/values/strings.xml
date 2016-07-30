@@ -276,7 +276,6 @@
     <string name="cycle_up_summary">Cycles to wait after the last hotplug event to plug another core.</string>
 
     <!-- Thermal -->
-    <string name="thermal_info">Use only one thermal driver from the following options, using more at the same time may cause unexpected behavior.</string>
     <string name="thermald">Thermald</string>
     <string name="thermald_summary">Stock Qualcomm thermal driver that prevents device from overheating. This should be disabled if current kernel has an alternative.</string>
     <string name="intellithermal">Intellithermal</string>

@@ -77,11 +77,6 @@ public class ThermalFragment extends RecyclerViewFragment implements SwitchCardV
     public void init(Bundle savedInstanceState) {
         super.init(savedInstanceState);
 
-        final InformationCardView.DInformationCard mInformationCard = new InformationCardView.DInformationCard();
-        mInformationCard.setText(getString(R.string.thermal_info));
-
-        addView(mInformationCard);
-
         if (Thermal.hasThermald()) thermaldInit();
         if (Thermal.hasThermalSettings()) thermalInit();
         if (Thermal.hasMsmThermal()) msmThermalInit();
