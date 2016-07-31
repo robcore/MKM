@@ -616,6 +616,12 @@ public interface Constants {
 
     String[] BATTERY_ARRAY = {FORCE_FAST_CHARGE, BLX, CHARGE_RATE};
 
+    // Power
+    String C0STATE = "/sys/module/msm_pm/modes/cpu0/wfi/idle_enabled";
+    String C1STATE = "/sys/module/msm_pm/modes/cpu0/retention/idle_enabled";
+    String C2STATE = "/sys/module/msm_pm/modes/cpu0/standalone_power_collapse/idle_enabled";
+    String C3STATE = "/sys/module/msm_pm/modes/cpu0/power_collapse/idle_enabled";
+
     // I/O
     String IO_INTERNAL_SCHEDULER = "/sys/block/mmcblk0/queue/scheduler";
     String IO_EXTERNAL_SCHEDULER = "/sys/block/mmcblk1/queue/scheduler";

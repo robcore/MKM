@@ -59,6 +59,7 @@ import com.grarak.kerneladiutor.fragments.kernel.IOFragment;
 import com.grarak.kerneladiutor.fragments.kernel.KSMFragment;
 import com.grarak.kerneladiutor.fragments.kernel.LMKFragment;
 import com.grarak.kerneladiutor.fragments.kernel.MiscFragment;
+import com.grarak.kerneladiutor.fragments.kernel.PowerFragment;
 import com.grarak.kerneladiutor.fragments.kernel.ScreenFragment;
 import com.grarak.kerneladiutor.fragments.kernel.SoundFragment;
 import com.grarak.kerneladiutor.fragments.kernel.ThermalFragment;
@@ -262,6 +263,7 @@ public class MainActivity extends BaseActivity implements Constants {
             ITEMS.add(new DAdapter.Item(getString(R.string.sound), new SoundFragment()));
         if (!Utils.isTV(this))
             ITEMS.add(new DAdapter.Item(getString(R.string.battery), new BatteryFragment()));
+        ITEMS.add(new DAdapter.Item(getString(R.string.power), new PowerFragment()));
         ITEMS.add(new DAdapter.Item(getString(R.string.io_scheduler), new IOFragment()));
         if (KSM.hasKsm())
             ITEMS.add(new DAdapter.Item(getString(R.string.ksm), new KSMFragment()));

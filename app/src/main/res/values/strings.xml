@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
 
-    <string name="app_name">Kernel Adiutor</string>
+    <string name="app_name">MKM</string>
     <string name="root_waiting">Waiting for root access</string>
     <string name="no_root">No root available</string>
     <string name="no_busybox">No busybox available</string>
@@ -72,6 +72,7 @@
     <string name="wake_controls">Wake Controls</string>
     <string name="sound">Sound</string>
     <string name="battery">Battery</string>
+    <string name="power">Power</string>
     <string name="io_scheduler">I/O Scheduler</string>
     <string name="ksm">Kernel Samepage Merging</string>
     <string name="low_memory_killer">Low Memory Killer</string>
@@ -496,6 +497,17 @@
     <string name="custom_charge_rate">Charge Rate</string>
     <string name="charge_rate">Battery Charging Rate</string>
     <string name="charge_rate_summary">Set Custom Battery Charge Rate. Caution: Exceeding 1250mA may damage your charging driver.</string>
+
+    <!-- Power -->
+    <string name="cstates">Krait C-States Settings</string>
+    <string name="c0state">C0 (WFI)</string>
+    <string name="c0state_summary">Shallowest Sleep with instant wake up.</string>
+    <string name="c1state">C1 (Retention)</string>
+    <string name="c1state_summary">Slightly deeper sleep with slight latency when waking up. You should disable this if you encounter screen flickering.</string>
+    <string name="c2state">C2 (Stand Alone Power Collapse)</string>
+    <string name="c2state_summary">Deeper sleep with longer latency when waking up.</string>
+    <string name="c3state">C3 (Power Collapse)</string>
+    <string name="c3state_summary">Really deep sleep with longest latency when waking up.</string>
 
     <!-- I/O Scheduler -->
     <string name="internal_storage">Internal Storage</string>
